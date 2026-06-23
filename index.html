@@ -1,249 +1,587 @@
-<header class="hero position-relative">
+```html
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Abuela | Verdulería y Frutería</title>
 
-    <img src="img/fachada.jpg"
-         class="w-100"
-         style="height:650px;object-fit:cover;filter:brightness(.45);">
+  <meta name="description" content="La Abuela Verdulería y Frutería en La Ilusión, Dulce Nombre de Cartago. Frutas, verduras y productos frescos para toda la familia.">
 
-    <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-        <img src="img/logo.png"
-             width="220"
-             class="mb-4">
+  <style>
+    :root {
+      --verde: #2e7d32;
+      --verde-claro: #7cb342;
+      --naranja: #f57c00;
+      --amarillo: #fbc02d;
+      --rojo: #d84315;
+      --crema: #fff8e1;
+      --oscuro: #1b3a1b;
+    }
 
-        <h1 class="display-2 fw-bold">
-            La Abuela
-        </h1>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--crema);
+      color: #2f3e2f;
+    }
 
-        <h3>Verdulería y Frutería</h3>
+    .navbar {
+      background-color: rgba(46, 125, 50, 0.96);
+    }
 
-        <p class="lead">
-            Del campo a tu mesa con productos frescos para toda la familia.
-        </p>
+    .navbar-brand,
+    .nav-link {
+      color: white !important;
+      font-weight: 600;
+    }
 
-        <a class="btn btn-success btn-lg"
-           href="https://laabuela-catalogo-mw1exf4.gamma.site/"
-           target="_blank">
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("img/fachada.jpg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding-top: 90px;
+    }
 
-            Ver Catálogo
+    .hero-logo {
+      width: 220px;
+      max-width: 70%;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      margin-bottom: 25px;
+    }
 
-        </a>
+    .btn-abuela {
+      background-color: var(--naranja);
+      color: white;
+      border-radius: 40px;
+      padding: 12px 28px;
+      font-weight: bold;
+      border: none;
+    }
 
-      <div class="row align-items-center my-5">
+    .btn-abuela:hover {
+      background-color: var(--rojo);
+      color: white;
+    }
+
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: white;
+      border-radius: 40px;
+      padding: 12px 28px;
+      font-weight: bold;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #1ebe5d;
+      color: white;
+    }
+
+    .section-title {
+      color: var(--verde);
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    }
+
+    .icon-box {
+      font-size: 42px;
+      color: var(--verde);
+    }
+
+    .product-img {
+      height: 260px;
+      object-fit: cover;
+      border-radius: 18px;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .product-img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+
+    .carousel-item img {
+      height: 560px;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, #fff3cd, #e8f5e9);
+      border-left: 8px solid var(--naranja);
+      padding: 30px;
+      border-radius: 24px;
+    }
+
+    .testimonial {
+      background-color: white;
+      border-radius: 20px;
+      padding: 25px;
+      height: 100%;
+    }
+
+    .recipe-card img {
+      height: 220px;
+      object-fit: cover;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 380px;
+      border: 0;
+      border-radius: 24px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      background-color: #25D366;
+      color: white;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.3);
+      z-index: 999;
+      text-decoration: none;
+    }
+
+    .footer {
+      background-color: var(--oscuro);
+      color: white;
+      padding: 45px 20px;
+    }
+
+    .footer a {
+      color: #c8e6c9;
+      text-decoration: none;
+    }
+
+    .badge-fresh {
+      background-color: var(--verde);
+      color: white;
+      border-radius: 30px;
+      padding: 8px 16px;
+      display: inline-block;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="bi bi-basket2-fill"></i> La Abuela
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#historia">Historia</a></li>
+        <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#recetas">Recetas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#ubicacion">Ubicación</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pedidos">Pedidos</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="inicio" class="hero">
+  <div class="container">
+    <img src="img/logo.png" alt="Logo La Abuela Verdulería y Frutería" class="hero-logo">
+
+    <h1 class="display-3 fw-bold">La Abuela</h1>
+    <h2 class="mb-3">Verdulería y Frutería</h2>
+
+    <p class="lead fs-4">
+      Del campo a tu mesa con productos frescos para toda la familia.
+    </p>
+
+    <p class="mb-4">
+      Frescura, calidad y buenos precios todos los días en Dulce Nombre de Cartago.
+    </p>
+
+    <a href="https://laabuela-catalogo-mw1exf4.gamma.site/" target="_blank" class="btn btn-abuela btn-lg me-2">
+      Ver catálogo digital
+    </a>
+
+    <a href="https://wa.me/50689833000" target="_blank" class="btn btn-whatsapp btn-lg">
+      Pedir por WhatsApp
+    </a>
+  </div>
+</header>
+
+<main>
+
+<section class="container py-5">
+  <div class="row align-items-center g-5">
+    <div class="col-lg-6">
+      <span class="badge-fresh">Producto fresco del día</span>
+      <h2 class="section-title">Bienvenidos</h2>
+      <p>
+        La Abuela Verdulería y Frutería es un negocio familiar dedicado a la venta de frutas,
+        verduras, legumbres, productos frescos y alimentos complementarios de la mejor calidad.
+      </p>
+      <p>
+        Ubicados en <strong>La Ilusión, Dulce Nombre de Cartago</strong>, trabajamos cada día
+        para ofrecer alimentos frescos, precios justos y una atención cercana.
+      </p>
+      <p>
+        Nuestro compromiso es que cada familia pueda disfrutar alimentos saludables, frescos y accesibles.
+      </p>
+    </div>
 
     <div class="col-lg-6">
-
-        <img src="img/interior.jpg"
-             class="img-fluid rounded shadow">
-
+      <img src="img/interior.jpg" alt="Interior de La Abuela Verdulería y Frutería" class="img-fluid rounded-4 shadow">
     </div>
-
-    <div class="col-lg-6">
-
-        <h2>Nuestra tienda</h2>
-
-        <p>
-
-        Encontrará frutas, verduras, legumbres y productos frescos cuidadosamente seleccionados todos los días para llevar calidad y sabor a su mesa.
-
-        </p>
-
-    </div>
-
-</div>
-    </div>
-
-  <section class="container py-5">
-
-<h2 class="text-center text-success mb-5">
-
-Nuestros productos
-
-</h2>
-
-<div class="row g-4">
-
-<div class="col-md-3">
-
-<img src="img/pina1.jpg"
-class="img-fluid rounded shadow">
-
-</div>
-
-<div class="col-md-3">
-
-<img src="img/papaya.jpg"
-class="img-fluid rounded shadow">
-
-</div>
-
-<div class="col-md-3">
-
-<img src="img/mango.jpg"
-class="img-fluid rounded shadow">
-
-</div>
-
-<div class="col-md-3">
-
-<img src="img/fresa.jpg"
-class="img-fluid rounded shadow">
-
-</div>
-
-<div class="col-md-3">
-
-<img src="img/banano.jpg"
-class="img-fluid rounded shadow">
-
-</div>
-
-<div class="col-md-3">
-
-<img src="img/guayaba.jpg"
-class="img-fluid rounded shadow">
-
-</div>
-
-<div class="col-md-3">
-
-<img src="img/papa.jpg"
-class="img-fluid rounded shadow">
-
-</div>
-
-<div class="col-md-3">
-
-<img src="img/camote.jpg"
-class="img-fluid rounded shadow">
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
-  <div id="carouselExample"
-class="carousel slide mb-5"
-data-bs-ride="carousel">
+<section id="historia" class="container py-5">
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <h2 class="section-title">Nuestra historia</h2>
+      <p>
+        La Abuela Verdulería y Frutería nace en el año <strong>2023</strong>, inspirada en el legado
+        de <strong>Doña Evangelina</strong>, una mujer que dedicó su vida al cuidado de su familia y enseñó
+        que una buena alimentación es el primer paso para una vida sana.
+      </p>
+      <p>
+        El nombre <strong>La Abuela</strong> es un homenaje a los valores de trabajo, honestidad,
+        servicio y bienestar que ella transmitió a las nuevas generaciones.
+      </p>
+    </div>
 
-<div class="carousel-inner">
+    <div class="col-lg-6">
+      <div class="highlight">
+        <h3>“La comida es salud. La mesa es unión. La frescura comienza en La Abuela.”</h3>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="carousel-item active">
+<section class="container py-5">
+  <div id="carouselLaAbuela" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
-<img src="img/interior.jpg"
-class="d-block w-100">
+      <div class="carousel-item active">
+        <img src="img/interior.jpg" class="d-block w-100" alt="Productos frescos en la tienda">
+      </div>
 
-</div>
+      <div class="carousel-item">
+        <img src="img/fachada.jpg" class="d-block w-100" alt="Fachada de La Abuela">
+      </div>
 
-<div class="carousel-item">
+      <div class="carousel-item">
+        <img src="img/pina1.jpg" class="d-block w-100" alt="Piñas frescas">
+      </div>
 
-<img src="img/fachada.jpg"
-class="d-block w-100">
+      <div class="carousel-item">
+        <img src="img/sandia.jpg" class="d-block w-100" alt="Sandía fresca">
+      </div>
 
-</div>
+      <div class="carousel-item">
+        <img src="img/fresa.jpg" class="d-block w-100" alt="Fresas frescas">
+      </div>
 
-<div class="carousel-item">
+    </div>
 
-<img src="img/pina2.jpg"
-class="d-block w-100">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselLaAbuela" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
 
-</div>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselLaAbuela" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</section>
 
-<div class="carousel-item">
+<section class="container py-5">
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card p-4 h-100">
+        <h2 class="section-title">Nuestra misión</h2>
+        <p>
+          Ofrecer frutas, verduras y productos frescos de excelente calidad, promoviendo una alimentación saludable
+          mediante un servicio cercano, honesto y accesible para las familias de Cartago.
+        </p>
+      </div>
+    </div>
 
-<img src="img/sandia.jpg"
-class="d-block w-100">
+    <div class="col-md-6">
+      <div class="card p-4 h-100">
+        <h2 class="section-title">Nuestra visión</h2>
+        <p>
+          Ser la verdulería de mayor confianza en la comunidad, reconocida por la frescura de sus productos,
+          la atención personalizada y el compromiso con la salud y el bienestar de nuestros clientes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
-
-<div class="carousel-item">
-
-<img src="img/fresa.jpg"
-class="d-block w-100">
-
-</div>
-
-</div>
-
-<button class="carousel-control-prev"
-type="button"
-data-bs-target="#carouselExample"
-data-bs-slide="prev">
-
-<span class="carousel-control-prev-icon"></span>
-
-</button>
-
-<button class="carousel-control-next"
-type="button"
-data-bs-target="#carouselExample"
-data-bs-slide="next">
-
-<span class="carousel-control-next-icon"></span>
-
-</button>
-
-</div>
+<section id="productos" class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="section-title">Nuestros productos</h2>
+    <p>Frutas y verduras frescas, seleccionadas con cuidado para su mesa.</p>
+  </div>
 
   <div class="row g-4">
+    <div class="col-6 col-md-3">
+      <img src="img/pina1.jpg" class="img-fluid product-img w-100" alt="Piñas frescas">
+      <h5 class="mt-2 text-center">Piña</h5>
+    </div>
 
-<div class="col-md-4">
+    <div class="col-6 col-md-3">
+      <img src="img/papaya.jpg" class="img-fluid product-img w-100" alt="Papaya fresca">
+      <h5 class="mt-2 text-center">Papaya</h5>
+    </div>
 
-<div class="card shadow">
+    <div class="col-6 col-md-3">
+      <img src="img/mango.jpg" class="img-fluid product-img w-100" alt="Mango fresco">
+      <h5 class="mt-2 text-center">Mango</h5>
+    </div>
 
-<img src="img/fresa.jpg"
-class="card-img-top">
+    <div class="col-6 col-md-3">
+      <img src="img/fresa.jpg" class="img-fluid product-img w-100" alt="Fresas frescas">
+      <h5 class="mt-2 text-center">Fresas</h5>
+    </div>
 
-<div class="card-body">
+    <div class="col-6 col-md-3">
+      <img src="img/banano.jpg" class="img-fluid product-img w-100" alt="Bananos frescos">
+      <h5 class="mt-2 text-center">Banano</h5>
+    </div>
 
-<h4>Fresas Frescas</h4>
+    <div class="col-6 col-md-3">
+      <img src="img/cebolla.jpg" class="img-fluid product-img w-100" alt="Cebolla fresca">
+      <h5 class="mt-2 text-center">Cebolla</h5>
+    </div>
 
-<p>Seleccionadas diariamente.</p>
+    <div class="col-6 col-md-3">
+      <img src="img/guayaba.jpg" class="img-fluid product-img w-100" alt="Guayaba fresca">
+      <h5 class="mt-2 text-center">Guayaba</h5>
+    </div>
 
-</div>
+    <div class="col-6 col-md-3">
+      <img src="img/papa.jpg" class="img-fluid product-img w-100" alt="Papa fresca">
+      <h5 class="mt-2 text-center">Papa</h5>
+    </div>
 
-</div>
+    <div class="col-6 col-md-3">
+      <img src="img/camote.jpg" class="img-fluid product-img w-100" alt="Camote fresco">
+      <h5 class="mt-2 text-center">Camote</h5>
+    </div>
 
-</div>
+    <div class="col-6 col-md-3">
+      <img src="img/sandia.jpg" class="img-fluid product-img w-100" alt="Sandía fresca">
+      <h5 class="mt-2 text-center">Sandía</h5>
+    </div>
+  </div>
 
-<div class="col-md-4">
+  <div class="text-center mt-5">
+    <a href="https://laabuela-catalogo-mw1exf4.gamma.site/" target="_blank" class="btn btn-abuela btn-lg">
+      Consultar catálogo completo
+    </a>
+  </div>
+</section>
 
-<div class="card shadow">
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="section-title">¿Por qué elegirnos?</h2>
+  </div>
 
-<img src="img/pina1.jpg"
-class="card-img-top">
+  <div class="row g-4 text-center">
+    <div class="col-md-4">
+      <div class="card p-4 h-100">
+        <i class="bi bi-flower1 icon-box"></i>
+        <h4>Frescura diaria</h4>
+        <p>Productos seleccionados cuidadosamente para conservar sabor y calidad.</p>
+      </div>
+    </div>
 
-<div class="card-body">
+    <div class="col-md-4">
+      <div class="card p-4 h-100">
+        <i class="bi bi-cash-coin icon-box"></i>
+        <h4>Precios justos</h4>
+        <p>Buena relación entre calidad, frescura y precio para las familias.</p>
+      </div>
+    </div>
 
-<h4>Piñas Dulces</h4>
+    <div class="col-md-4">
+      <div class="card p-4 h-100">
+        <i class="bi bi-heart-fill icon-box"></i>
+        <h4>Atención familiar</h4>
+        <p>Servicio cercano, honesto y amable, como comprar en casa.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>Directamente del productor.</p>
+<section id="recetas" class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="section-title">Recetas saludables</h2>
+    <p>Ideas sencillas para disfrutar mejor sus frutas y verduras.</p>
+  </div>
 
-</div>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card recipe-card h-100">
+        <img src="img/sandia.jpg" alt="Receta con sandía">
+        <div class="card-body">
+          <h4>Agua fresca de sandía</h4>
+          <p>Licúe sandía fría con agua, hielo y unas gotas de limón. Refrescante, natural y perfecta para la familia.</p>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <div class="col-md-4">
+      <div class="card recipe-card h-100">
+        <img src="img/mango.jpg" alt="Receta con mango">
+        <div class="card-body">
+          <h4>Ensalada tropical</h4>
+          <p>Combine mango, piña, papaya y banano. Una merienda colorida, dulce y llena de energía natural.</p>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <div class="col-md-4">
+      <div class="card recipe-card h-100">
+        <img src="img/papa.jpg" alt="Receta con papa">
+        <div class="card-body">
+          <h4>Picadillo casero</h4>
+          <p>Prepare papa, zanahoria, cebolla y chile dulce. Una receta tradicional, económica y rendidora.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="col-md-4">
+  <div class="text-center mt-4">
+    <a href="https://recetas-del-mes-junio-20-yg78goc.gamma.site/" target="_blank" class="btn btn-abuela">
+      Ver recetas del mes
+    </a>
+  </div>
+</section>
 
-<div class="card shadow">
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+  </div>
 
-<img src="img/papaya.jpg"
-class="card-img-top">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="testimonial shadow-sm">
+        <p>“Siempre encuentro frutas frescas y buena atención. Es como comprar donde la familia.”</p>
+        <strong>Cliente frecuente</strong>
+      </div>
+    </div>
 
-<div class="card-body">
+    <div class="col-md-4">
+      <div class="testimonial shadow-sm">
+        <p>“Los productos se ven frescos y los precios son buenos. Me gusta apoyar el comercio local.”</p>
+        <strong>Vecina de Cartago</strong>
+      </div>
+    </div>
 
-<h4>Papaya Premium</h4>
+    <div class="col-md-4">
+      <div class="testimonial shadow-sm">
+        <p>“Excelente para comprar rápido lo necesario para la cocina de la semana.”</p>
+        <strong>Cliente de La Ilusión</strong>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>Ideal para una alimentación saludable.</p>
+<section id="pedidos" class="container py-5">
+  <div class="highlight text-center">
+    <h2 class="section-title">Pedidos por WhatsApp</h2>
+    <p class="fs-5">Consulte disponibilidad diaria y servicio a domicilio según cobertura.</p>
 
-</div>
+    <a href="https://wa.me/50689833000" target="_blank" class="btn btn-whatsapp btn-lg">
+      <i class="bi bi-whatsapp"></i> Escribir por WhatsApp
+    </a>
+  </div>
+</section>
 
-</div>
+<section id="ubicacion" class="container py-5">
+  <div class="text-center mb-4">
+    <h2 class="section-title">Ubicación</h2>
+    <p><strong>La Ilusión, Dulce Nombre de Cartago, Costa Rica</strong></p>
+  </div>
 
-</div>
+  <div class="map">
+    <iframe
+      src="https://www.google.com/maps?q=La%20Ilusi%C3%B3n%2C%20Dulce%20Nombre%20de%20Cartago%2C%20Costa%20Rica&output=embed"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
 
-</div>
+</main>
 
-</header>
+<footer class="footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h4>La Abuela</h4>
+        <p>Verdulería y Frutería</p>
+        <p><em>Del campo a tu mesa con productos frescos para toda la familia.</em></p>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Enlaces</h4>
+        <p><a href="https://laabuela-catalogo-mw1exf4.gamma.site/" target="_blank">Catálogo digital</a></p>
+        <p><a href="https://recetas-del-mes-junio-20-yg78goc.gamma.site/" target="_blank">Recetas del mes</a></p>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Contacto</h4>
+        <p><i class="bi bi-geo-alt-fill"></i> La Ilusión, Dulce Nombre de Cartago</p>
+        <p><i class="bi bi-whatsapp"></i> 8983-3000</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="text-center">
+      <p class="mb-0">© 2026 La Abuela Verdulería y Frutería. Frescura, calidad y buenos precios todos los días.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/50689833000" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+```
